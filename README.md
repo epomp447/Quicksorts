@@ -1,16 +1,17 @@
 # Quicksorts
-Variants of the Quicksort Algorithm(Java)
-Version 1. Our standard version of Quicksort --- the one that appears in the text and was
-discussed in class.
-Version 2. If a subarray is “small”, it is not subjected to quicksort, but instead is sorted by
-InsertionSort. You will implement this with “small” interpreted as:
-a). at most 5;
-b). at most 10;
-c). at most 20.
-Version 3. Randomized Quicksort, as discussed in class.
-Version 4. Median of 3 Quicksort. That is, the first, last, and middle array elements are
-examined; the one with the middle value of the 3 (if it is not already the last element) is
-swapped with the last to serve as the pivot.
+	Variants of the Quicksort Algorithm(Java)
+		Version 1. Our standard version of Quicksort --- the one that appears in the text and was
+			discussed in class.
+		Version 2. If a subarray is “small”, it is not subjected to quicksort, but instead is sorted by
+		InsertionSort. You will implement this with “small” interpreted as:
+			a). at most 5;
+			b). at most 10;
+			c). at most 20.
+		Version 3. Randomized Quicksort, as discussed in class.
+		Version 4. Median of 3 Quicksort. That is, the first, last, and middle array elements are
+			examined; the one with the middle value of the 3 (if it is not already the last element) is
+			swapped with the last to serve as the pivot.
+			
 Each version should be:
 1. Run once on a small size array (say n = 16) with voluminous output at each stage, as a
 correctness check.
