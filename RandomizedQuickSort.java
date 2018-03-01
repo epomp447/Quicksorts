@@ -2,10 +2,11 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class RandomizedQuickSort {
-	
-	public static int n = 400;
-	static int numSwaps = 0;
-	static int numComps = 0;
+
+	public static int n = 50;//controls size of array
+	public static int numSwaps = 0;
+	public static int numComps = 0;
+
 	public static void main(String[] args) {
 		int arr[] = new int[n];
 		int n = arr.length;
@@ -16,42 +17,57 @@ public class RandomizedQuickSort {
 		System.out.println("\n\n unsorted array:");
 		printArray(arr);
 		System.out.println();
-		randQuickSort(arr, 0, n-1);
+		randQuickSort(arr, 0, n - 1);
 		System.out.println("sorted array");
 		printArray(arr);
 
 		System.out.println("Swaps: " + numSwaps);
 		System.out.println("Comparisons: " + numComps);
+		
+		
+		int A[] = new int[n];
+		almostSort(A, n);//creates almost sorted array
+		randQuickSort(A, 0, n - 1);
+		printArray(A);
+		System.out.println("Swaps: " + numSwaps);
+		System.out.println("Comparisons: " + numComps);
 	}
 
-	// ----------------------------------------------------------------------
-	/* A Function that will randomly select Pivot */
-	public static int randomizedSelect(int arr[], int p, int r, int i) {
-		if (p == r) {
-			return arr[p];
+	// -----------------------------------------------------------------------
+	public static int[] almostSort(int arr[], int n) {
+		numComps=0;
+		numSwaps=0;
+		for (int i = 0; i < arr.length; i++) {
+			arr[i] = i;
 		}
+		Random r = new Random();
 
-		int q = randomizedPartition(arr, p, r);
-		int k = q - p + 1;// number of elements in the low side of partition + pivot
+		for (int k = n / 50; k > 0; k--) {
 
-		if (i == k) { // the pivot value is the answer
-			return arr[q];
-		} else if (i < k) {
-			return randomizedSelect(arr, p, q - 1, i);
-		} else {
-			return randomizedSelect(arr, q + 1, r, i - k);
+			// Pick a random index from 0 to i
+			int i = r.nextInt(n);
+			int j = r.nextInt(n);
+
+			// Swap arr[i] with the element at random index
+			int temp = arr[i];
+			arr[i] = arr[j];
+			arr[j] = temp;
 		}
+		// Prints the random array
+		System.out.println("\n\t"+Arrays.toString(arr));
+
+		return arr;
 	}
 
 	// -----------------------------------------------------------------------
 	public static int randomizedPartition(int arr[], int low, int high) {
-	System.out.println("old High: " +arr[high]);
+		System.out.println("old High: " + arr[high]);
 		Random rand = new Random();
 		int i = rand.nextInt(arr.length);
 		int temp = arr[high];
 		arr[high] = arr[i];
 		arr[i] = temp;
-		System.out.println("New High: "+arr[high] );
+		System.out.println("New High: " + arr[high]);
 		printArray(arr);
 		return arr[high];
 	}
@@ -80,10 +96,11 @@ public class RandomizedQuickSort {
 
 			// Recursively sort elements before
 			// partition and after partition
-			//QuickSort(arr, low, pi - 1);
+			// QuickSort(arr, low, pi - 1);
 			QuickSort(arr, low, high);
 		}
 	}
+
 	// ----------------------------------------------------------------------
 	/* A utility function to print array of size n */
 	public static void printArray(int arr[]) {
@@ -116,7 +133,7 @@ public class RandomizedQuickSort {
 				arr[j] = temp;
 				numSwaps++;
 			}
-			
+
 		}
 
 		// swap arr[i+1] and arr[high] (or pivot)
