@@ -2,8 +2,8 @@
 /*
  * OBJECTIVE:
  * 
- * If a subarray is ìsmallî, it is not subjected to quicksort, but instead is sorted by
- *InsertionSort. You will implement this with ìsmallî interpreted as:
+ * If a subarray is ‚Äúsmall‚Äù, it is not subjected to quicksort, but instead is sorted by
+ *InsertionSort. You will implement this with ‚Äúsmall‚Äù interpreted as:
  *at most 5;
  *at most 10;
  *at most 20.
@@ -14,12 +14,12 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class InsertionQuickSort {
-	public static int n = 400;//Controls Size of Array
-	static int numSwaps = 0;
-	static int numComps = 0;
+	public static int n = 50;//Controls Size of Array
+	public static int numSwaps = 0;
+	public static int numComps = 0;
 	public static void main(String[] args) {
 		int arr[] = new int[n];
-		int n = arr.length - 1;
+		//int n = arr.length - 1;
 		Random rand = new Random();
 		for (int i = 0; i < arr.length; i++) {
 			arr[i] = rand.nextInt(100);
@@ -27,9 +27,16 @@ public class InsertionQuickSort {
 		System.out.println("\n\n unsorted array:");
 		printArray(arr);
 		System.out.println();
-		insertionQuickSort(arr, 0, n);
+		insertionQuickSort(arr, 0, n-1);
 		System.out.println("\n\n sorted array:");
 		printArray(arr);
+		System.out.println("Swaps: " + numSwaps);
+		System.out.println("Comparisons: " + numComps);
+		int A[] = new int[n];
+		almostSort(A, n);
+		insertionQuickSort(A, 0, n - 1);
+		System.out.println("\n\n sorted array:");
+		printArray(A);
 		System.out.println("Swaps: " + numSwaps);
 		System.out.println("Comparisons: " + numComps);
 	}
@@ -54,7 +61,33 @@ public class InsertionQuickSort {
 			}
 		}
 	}
+	// -----------------------------------------------------------------------
+	/* Function that generates an almost sorted array */
+	public static int[] almostSort(int arr[], int n) {
+		System.out.print("\n Almost sorted:");
+		numComps=0;
+		numSwaps=0;
+		for (int i = 0; i < arr.length; i++) {
+			arr[i] = i;
+		}
+		Random r = new Random();
 
+		for (int k = n / 50; k > 0; k--) {
+
+			// Pick a random index from 0 to n
+			int i = r.nextInt(n);
+			int j = r.nextInt(n);
+
+			// Swap arr[i] with the element at arr[j]
+			int temp = arr[i];
+			arr[i] = arr[j];
+			arr[j] = temp;
+		}
+		// Prints the almost sorted array
+		System.out.println("\n\t"+Arrays.toString(arr));
+
+		return arr;
+	}
 	// ----------------------------------------------------------------------
 	public static void insertionSort(int A[]) {
 
