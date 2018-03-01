@@ -29,10 +29,6 @@ Tabulate your results, and draw whatever conclusions you think are appropriate.
 	To Do:
 	
 		1.Find mean and max for "Almost Sorted" arrays.
-		
-		2.Run each variant 10 times
-		
-		3.Tabulate Max
 
 
 
