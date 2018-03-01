@@ -3,7 +3,7 @@ import java.util.Random;
 
 public class RandomizedQuickSort {
 
-	public static int n = 50;//controls size of array
+	public static int n = 50;
 	public static int numSwaps = 0;
 	public static int numComps = 0;
 
@@ -23,10 +23,9 @@ public class RandomizedQuickSort {
 
 		System.out.println("Swaps: " + numSwaps);
 		System.out.println("Comparisons: " + numComps);
-		
-		
+
 		int A[] = new int[n];
-		almostSort(A, n);//creates almost sorted array
+		almostSort(A, n);
 		randQuickSort(A, 0, n - 1);
 		printArray(A);
 		System.out.println("Swaps: " + numSwaps);
@@ -35,8 +34,9 @@ public class RandomizedQuickSort {
 
 	// -----------------------------------------------------------------------
 	public static int[] almostSort(int arr[], int n) {
-		numComps=0;
-		numSwaps=0;
+		System.out.print("\n Almost sorted:");
+		numComps = 0;
+		numSwaps = 0;
 		for (int i = 0; i < arr.length; i++) {
 			arr[i] = i;
 		}
@@ -44,17 +44,17 @@ public class RandomizedQuickSort {
 
 		for (int k = n / 50; k > 0; k--) {
 
-			// Pick a random index from 0 to i
+			// Pick a random index from 0 to n
 			int i = r.nextInt(n);
 			int j = r.nextInt(n);
 
-			// Swap arr[i] with the element at random index
+			// Swap arr[i] with the element at arr[j]
 			int temp = arr[i];
 			arr[i] = arr[j];
 			arr[j] = temp;
 		}
 		// Prints the random array
-		System.out.println("\n\t"+Arrays.toString(arr));
+		System.out.println("\n\t" + Arrays.toString(arr));
 
 		return arr;
 	}
