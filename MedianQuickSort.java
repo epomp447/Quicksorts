@@ -1,17 +1,16 @@
-
 import java.util.Arrays;
 import java.util.Random;
 
 public class MedianQuickSort {
 
-	public static int n = 400;// Controls size of array
-	static int numSwaps = 0;
-	static int numComps = 0;
+	public static int n = 50;// Controls size of array
+	public static int numSwaps = 0;
+	public static int numComps = 0;
 
 	public static void main(String[] args) {
-		// int arr[] = {-3, 9, 6, 11, 4};
+
 		int arr[] = new int[n];
-		int n = arr.length - 1;
+		
 		Random rand = new Random();
 		for (int i = 0; i < arr.length; i++) {
 			arr[i] = rand.nextInt(100);
@@ -19,12 +18,20 @@ public class MedianQuickSort {
 		System.out.println("\n\n unsorted array:");
 		printArray(arr);
 		System.out.println();
-		medianQuickSort(arr, 0, n);
+		medianQuickSort(arr, 0, n-1);
 		System.out.println("\n\n sorted array:");
 		printArray(arr);
-
 		System.out.println("\n\tSwaps: " + numSwaps);
 		System.out.println("\tComparisons: " + numComps);
+
+		int A[] = new int[n];
+		almostSort(A, n);
+		medianQuickSort(A, 0, n - 1);
+		System.out.println("\n\n sorted array:");
+		printArray(A);
+		System.out.println("Swaps: " + numSwaps);
+		System.out.println("Comparisons: " + numComps);
+
 	}
 
 	public static int medianPivot(int arr[], int low, int high) {
@@ -37,14 +44,14 @@ public class MedianQuickSort {
 		int last = arr[arr.length - 1];
 		int mid = (high) / 2;
 
-		System.out.println("\tMiddle of Arr at Index= " + mid + " : " + arr[mid]);
+		System.out.println("\tMiddle of Arr at Index : [" + mid + "] = " + arr[mid]);
 		int[] sortingArr = { arr[low], arr[mid], arr[high] };
 
 		Arrays.sort(sortingArr);
 
 		int middleValue = sortingArr[1];
-		System.out.println("\t"+Arrays.toString(sortingArr));
-		//printArray(sortingArr);
+		System.out.println("\t" + Arrays.toString(sortingArr));
+		// printArray(sortingArr);
 
 		// swap with the last to serve as pivot
 		int temp = arr[high];
@@ -62,7 +69,7 @@ public class MedianQuickSort {
 	}
 
 	// ----------------------------------------------------------------------
-	/*  method for medianQuicksort */
+	/* method for medianQuicksort */
 	public static void medianQuickSort(int arr[], int low, int high) {
 		if (low >= high)
 			return;
@@ -129,5 +136,33 @@ public class MedianQuickSort {
 		numSwaps++;
 		return i + 1;
 
+	}
+
+	// -----------------------------------------------------------------------
+	/* Function that generates an almost sorted array */
+	public static int[] almostSort(int arr[], int n) {
+		System.out.print("\n Almost sorted:");
+		numComps = 0;
+		numSwaps = 0;
+		for (int i = 0; i < arr.length; i++) {
+			arr[i] = i;
+		}
+		Random r = new Random();
+
+		for (int k = n / 50; k > 0; k--) {
+
+			// Pick a random index from 0 to n
+			int i = r.nextInt(n);
+			int j = r.nextInt(n);
+
+			// Swap arr[i] with the element at arr[j]
+			int temp = arr[i];
+			arr[i] = arr[j];
+			arr[j] = temp;
+		}
+		// Prints the almost sorted array
+		System.out.println("\n\t" + Arrays.toString(arr));
+
+		return arr;
 	}
 }
