@@ -58,8 +58,12 @@ public class MedianQuickSort {
 		arr[high] = middleValue;
 		if (middleValue == arr[low]) {
 			arr[low] = temp;
+			numComps++;
+			numSwaps++;
 		} else if (middleValue == arr[mid]) {
 			arr[mid] = temp;
+			numComps++;
+			numSwaps++;
 		}
 
 		// System.out.println("median: ");
