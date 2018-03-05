@@ -26,10 +26,6 @@ b. Do n/50 times: randomly choose indices i, j and swap the ith and jth array el
 Tabulate your results, and draw whatever conclusions you think are appropriate.
 
 
-	To Do:
-	
-		1.Find mean and max for "Almost Sorted" arrays.
-
 
 
 Tabulating Result:
