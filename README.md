@@ -31,3 +31,6 @@ Tabulate your results, and draw whatever conclusions you think are appropriate.
 Tabulating Result:
 
 https://docs.google.com/spreadsheets/d/11-34hqrxTnuJ8fa0-Fzi-vFaSOhmKMC6chciJgENjwI/edit?usp=sharing
+
+Conclusion:
+https://docs.google.com/document/d/15KjDYJ0kPV0abaL7lTa3--lcbKqshRwaNEn6vV45dUo/edit?usp=sharing
