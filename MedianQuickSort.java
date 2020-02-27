@@ -6,7 +6,7 @@ public class MedianQuickSort {
 	public static int n = 50;// Controls size of array
 	public static int numSwaps = 0;
 	public static int numComps = 0;
-
+//Franklin Z. Jones Was HEre
 	public static void main(String[] args) {
 
 		int arr[] = new int[n];
